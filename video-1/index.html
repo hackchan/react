@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla Js</title>
+    <style>
+      button {
+        background: #09f;
+        border: 0;
+        padding: 5px 10px;
+        color: #fff;
+        border-radius: 5px;
+        transition: 0.3s;
+        box-shadow: inset 0px -5px 1px rgba(2, 2, 2, 0.3);
+      }
+      button:active {
+        transform: scale(0.9);
+        box-shadow: inset 0px 0px 0px rgba(2, 2, 2, 0.5);
+      }
+      button:hover {
+        background: #44f;
+      }
+
+      button.liked {
+        background: red;
+        /* pointer-events: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <button data-id="123">Me gusta</button>
+    <button data-id="124">Me gusta</button>
+    <button data-id="125">Me gusta</button>
+  </body>
+  <script>
+    //recuperando el botton
+    const buttons = document.querySelectorAll('button')
+    buttons.forEach((button) => {
+      //al hacer click en el botto ejecutamos una funcion
+      button.addEventListener('click', function () {
+        //recupero la id del atributo
+        const id = button.getAttribute('data-id')
+
+        //llamar a un servicio para actualizar si me gusta
+        if (button.classList.contains('liked')) {
+          button.classList.remove('liked')
+          button.innerText = 'Me gusta'
+        } else {
+          button.classList.add('liked')
+          button.innerText = 'No Me gusta'
+        }
+      })
+    })
+  </script>
+</html>
